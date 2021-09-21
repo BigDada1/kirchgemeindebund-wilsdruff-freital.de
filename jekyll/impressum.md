@@ -1,17 +1,29 @@
 ---
 layout: page
 title: Impressum
-title-long: Verantwortlich gemäß § 5 TMG
 footer: true
-show_tile: false
 sitemap:
   exclude: 'yes'
 ---
 
-{% if site.author %}- {{ site.author }}{% endif %}
-{% if site.street_address %}- {{ site.street_address }}{% if site.city %} · {{ site.city }}{% endif %}{% endif %}
-{% if site.socials.phone %}- Tel.: [{{site.socials.phone | replace: "tel:", ""}}]({{site.socials.phone | replace: " ", ""}}){% endif %}
-{% if site.socials.envelope %}- E-Mail: [{{site.socials.envelope | replace: "mailto:", ""}}]({{site.socials.envelope}}){% endif %}
+# Verantwortlich gemäß § 5 TMG
+
+## Herausgeber
+{% if site.owner %}- {{ site.owner }}{% endif %}
+{% if site.contact.street_address %}- {{ site.contact.street_address }}{% if site.contact.city %} · {{ site.contact.city }}{% endif %}{% endif %}
+
+— Vertreten durch —
+
+{% if site.contact.name %}- {{ site.contact.name }}{% endif %}
+{% if site.contact.street_address %}- {{ site.contact.street_address }}{% if site.contact.city %} · {{ site.contact.city }}{% endif %}{% endif %}
+{% if site.contact.phone %}- Telefon: [{{ site.contact.phone | replace: "+49", "0" }}](tel:{{ site.contact.phone | replace: " ", ""}}){% if site.contact.fax %} · Fax: {{ site.contact.fax | replace: "+49", "0" }}{% endif %}{% endif %}
+{% if site.contact.email %}- E-Mail: [{{ site.contact.email }}](mailto:{{ site.contact.email }}){% endif %}
+
+## Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV
+{% if site.owner %}- {{ site.owner }}{% endif %}
+{% if site.contact.street_address %}- {{ site.contact.street_address }}{% if site.contact.city %} · {{ site.contact.city }}{% endif %}{% endif %}
+{% if site.contact.phone %}- Telefon: [{{ site.contact.phone | replace: "+49", "0" }}](tel:{{ site.contact.phone | replace: " ", ""}}){% if site.contact.fax %} · Fax: {{ site.contact.fax | replace: "+49", "0" }}{% endif %}{% endif %}
+{% if site.contact.email %}- E-Mail: [{{ site.contact.email }}](mailto:{{ site.contact.email }}){% endif %}
 
 ## Haftungsausschluss (Disclaimer)
 

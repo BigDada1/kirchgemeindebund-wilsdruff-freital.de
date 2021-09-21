@@ -16,19 +16,22 @@ theme: jekyll-agency
 url    : "" # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: "" # the subpath of your site, e.g. /blog
 
-title      : Kirchgemeindebund Wilsdruff-Freital
-email      : your-email@example.com #this is also the email contact forms will go to
+title: Kirchgemeindebund Wilsdruff-Freital
+owner: Ev.-Luth. Kirchgemeindebund Wilsdruff-Freital
 description: ""
-author     : Clemens Henker
-#logo:     #optional, defaults to site title
-  #path: assets\img\clients\creative-market.jpg
-  #height: 60 #height in px, defaults to 52px
 
-analytics:
-  google: #Google Analytics tracking code here
+contact:
+  name: Matthias Weinhold
+  email: kgb.wilsdruff-freital@evlks.de
+  phone: '+4935204 48286'
+  fax: '+4935204 48236'
+  street_address: Kirchplatz 3
+  city: 01723 Wilsdruff
 
 collections:
   portfolio:
+
+google_verify: ['TvUyDDIB758IKtWR0t3cS3S89ivZ8V034szemF2l69g']
 
 permalink: pretty
 
