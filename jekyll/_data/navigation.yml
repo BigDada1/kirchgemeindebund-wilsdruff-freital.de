@@ -1,9 +1,0 @@
-#
-# Work based on https://github.com/mmistakes/minimal-mistakes/blob/master/_data/ui-text.yml
-#
-# -----------------
-nav:
-  - title: "Kirchgemeinden"
-    section: churches
-  - title: "Kontakt"
-    section: contact

@@ -20,6 +20,12 @@ title: Kirchgemeindebund Wilsdruff-Freital
 owner: Ev.-Luth. Kirchgemeindebund Wilsdruff-Freital
 description: ""
 
+nav:
+  - title: "Kirchgemeinden"
+    section: churches
+  - title: "Kontakt"
+    section: contact
+    
 style:
   highlight: "#FF570A" # default: "#fed136"
   white: # default: "#fff"
