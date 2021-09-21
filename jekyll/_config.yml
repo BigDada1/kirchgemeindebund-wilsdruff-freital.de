@@ -21,7 +21,7 @@ owner: Ev.-Luth. Kirchgemeindebund Wilsdruff-Freital
 description: ""
 
 style:
-  highlight: # default: "#fed136"
+  highlight: "#FF570A" # default: "#fed136"
   white: # default: "#fff"
   black: # default: "#000"
   header-image: "/assets/img/churches/st_nikolaikirche_wilsdruff.jpg"
