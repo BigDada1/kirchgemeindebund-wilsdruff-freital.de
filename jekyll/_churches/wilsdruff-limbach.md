@@ -1,13 +1,13 @@
 ---
-caption: #what displays in the portfolio grid:
+caption:
   title: Wilsdruff · Limbach
   subtitle: #Ev.-Luth. Kirchgemeinde Wilsdruff-Limbach
-  thumbnail: /assets/img/portfolio/st_nikolaikirche_wilsdruff.jpg
+  thumbnail: /assets/img/churches/st_nikolaikirche_wilsdruff.jpg
   
 #what displays when the item is clicked:
 title: Wilsdruff · Limbach
 subtitle: Ev.-Luth. Kirchgemeinde Wilsdruff-Limbach
-image: /assets/img/portfolio/st_nikolaikirche_wilsdruff.jpg
+image: /assets/img/churches/st_nikolaikirche_wilsdruff.jpg
 alt: St. Nicolaikirche Wilsdruff
 ---
 Lorem ipsum dolor sit amet consectetur. **Markdown** supported.

@@ -2,11 +2,11 @@
 caption:
   title: Kesselsdorf
   subtitle: #Ev.-Luth St. Katharinen-Kirchgemeinde Kesselsdorf
-  thumbnail: /assets/img/portfolio/kirche_kesselsdorf.jpg
+  thumbnail: /assets/img/churches/kirche_kesselsdorf.jpg
 
 title: Kesselsdorf
 subtitle: Ev.-Luth St. Katharinen-Kirchgemeinde Kesselsdorf
-image: /assets/img/portfolio/kirche_kesselsdorf.jpg
+image: /assets/img/churches/kirche_kesselsdorf.jpg
 alt: St. Katharinenkirche Kesselsdorf
 ---
 Lorem ipsum dolor sit amet consectetur. **Markdown** supported.

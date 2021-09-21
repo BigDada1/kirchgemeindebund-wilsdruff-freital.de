@@ -2,11 +2,11 @@
 caption:
   title: Grumbach
   subtitle: #Ev.-Luth Kirchgemeinde Grumbach
-  thumbnail: /assets/img/portfolio/kirche-grumbach-2019.jpg
+  thumbnail: /assets/img/churches/kirche-grumbach-2019.jpg
 
 title: Grumbach
 subtitle: Ev.-Luth Kirchgemeinde Grumbach
-image: /assets/img/portfolio/kirche-grumbach-2019.jpg
+image: /assets/img/churches/kirche-grumbach-2019.jpg
 alt: Kirche Grumbach
 ---
 Lorem ipsum dolor sit amet consectetur. **Markdown** supported.

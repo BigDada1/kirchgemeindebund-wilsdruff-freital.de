@@ -6,10 +6,4 @@ header:
   title: Kirchgemeindebund
   text: Wilsdruff-Freital
   button: Wer gehört dazu?
-  buttonlink: "#portfolio"
-
-portfolio:
-  title: "Kirchgemeinden"
-  text: #"Lorem ipsum dolor sit amet consectetur."
-  section: portfolio
-  closebutton: "Schließen"
+  buttonlink: "#churches"
