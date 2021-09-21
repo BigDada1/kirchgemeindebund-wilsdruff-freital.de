@@ -3,8 +3,8 @@
 #
 # -----------------
 header:
-  title: #Kirchgemeindebund
-  text: #Wilsdruff-Freital
+  title: Kirchgemeindebund
+  text: Wilsdruff-Freital
   button: Wer gehört dazu?
   buttonlink: "#portfolio"
 
@@ -13,9 +13,3 @@ portfolio:
   text: #"Lorem ipsum dolor sit amet consectetur."
   section: portfolio
   closebutton: "Schließen"
-
-about:
-  title: "Über uns"
-  text: "our story"
-  body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde. **Markdown** supported."
-  section: about
