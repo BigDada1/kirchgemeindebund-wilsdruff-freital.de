@@ -15,6 +15,9 @@ $header-image: "{{ site.style.header-image }}";
 
 // Global CSS
 @import "base/page.scss";
+@import 'fontawesome.min.css';
+@import 'montserrat-v18.css';
+@import 'droidserif-v13.css';
 
 // Components
 @import "components/buttons.scss";
