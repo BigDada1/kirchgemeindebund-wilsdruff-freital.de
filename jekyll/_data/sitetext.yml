@@ -1,0 +1,25 @@
+#
+# Work based on https://github.com/mmistakes/minimal-mistakes/blob/master/_data/ui-text.yml
+#
+# -----------------
+header:
+  title: #Kirchgemeindebund
+  text: #Wilsdruff-Freital
+  button: Wer gehört dazu?
+  buttonlink: "#portfolio"
+
+portfolio:
+  title: "Kirchgemeinden"
+  text: #"Lorem ipsum dolor sit amet consectetur."
+  section: portfolio
+  closebutton: "Schließen"
+
+about:
+  title: "Über uns"
+  text: "our story"
+  body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde. **Markdown** supported."
+  section: about
+
+contact:
+  title: "Kontakt"
+  text: "Lorem ipsum or call 123456789"

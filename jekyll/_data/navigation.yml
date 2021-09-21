@@ -1,0 +1,11 @@
+#
+# Work based on https://github.com/mmistakes/minimal-mistakes/blob/master/_data/ui-text.yml
+#
+# -----------------
+nav:
+  - title: "Kirchgemeinden"
+    section: portfolio
+  - title: "Über uns"
+    section: about
+  - title: "Kontakt"
+    section: contact
