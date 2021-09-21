@@ -2,8 +2,6 @@
 RewriteEngine On
 
 # Force HTTPS and WWW 
-RewriteCond %{HTTP_HOST} !^www\.(.*)$ [OR,NC]
-RewriteCond %{HTTPS} off [OR] 
-RewriteCond %{HTTP:X-Forwarded-Proto} !https [OR]
-RewriteCond %{HTTP:X-Forwarded-SSL} !https
+RewriteCond %{REQUEST_URI} !^/(robots\.txt|favicon\.ico|sitemap\.xml)$
+RewriteCond %{HTTP_HOST} !^www\.kirchgemeindebund-wilsdruff-freital\.de$ [NC]
 RewriteRule ^(.*)$ https://www.kirchgemeindebund-wilsdruff-freital.de/$1 [R=301,L]
