@@ -11,8 +11,7 @@ $white: {{ site.data.style.white | default: "#fff" }} !default;
 $black: {{ site.data.style.black | default: "#000" }} !default;
 
 // Custom Images
-$header-image: "{{ site.data.style.header-image }}";
-$contact-image: "{{ site.data.style.contact-image }}";
+$header-image: "{{ site.header-image }}";
 
 // Global CSS
 @import "base/page.scss";
