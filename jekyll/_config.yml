@@ -20,6 +20,12 @@ title: Kirchgemeindebund Wilsdruff-Freital
 owner: Ev.-Luth. Kirchgemeindebund Wilsdruff-Freital
 description: ""
 
+header:
+  title: Kirchgemeindebund
+  text: Wilsdruff-Freital
+  button: Wer gehört dazu?
+  buttonlink: "#churches"
+  
 nav:
   - title: "Kirchgemeinden"
     section: churches
@@ -33,19 +39,20 @@ style:
   header-image: "/assets/img/churches/st_nikolaikirche_wilsdruff.jpg"
   churches-icon: "fas fa-expand fa-3x" # default: "fas fa-plus fa-3x"
 
+churches:
+  section: churches
+  title: "Kirchgemeinden"
+  text: #"Lorem ipsum dolor sit amet consectetur."
+  closebutton: "Schließen"
+  
 contact:
+  section: contact
   name: Matthias Weinhold
   email: kgb.wilsdruff-freital@evlks.de
   phone: '+4935204 48286'
   fax: '+4935204 48236'
   street_address: Kirchplatz 3
   city: 01723 Wilsdruff
-
-churches:
-  title: "Kirchgemeinden"
-  text: #"Lorem ipsum dolor sit amet consectetur."
-  section: churches
-  closebutton: "Schließen"
   
 collections:
   churches:
