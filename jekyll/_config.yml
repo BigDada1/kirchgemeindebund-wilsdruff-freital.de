@@ -43,7 +43,6 @@ churches:
   section: churches
   title: "Kirchgemeinden"
   text: #"Lorem ipsum dolor sit amet consectetur."
-  closebutton: "Schließen"
   
 contact:
   section: contact
