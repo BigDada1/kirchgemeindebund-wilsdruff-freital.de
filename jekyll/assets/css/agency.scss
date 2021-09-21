@@ -6,12 +6,12 @@
 @import "base/mixins.scss";
 
 // Custom colors
-$primary: {{ site.data.style.highlight | default: "#fed136" }} !default;
-$white: {{ site.data.style.white | default: "#fff" }} !default;
-$black: {{ site.data.style.black | default: "#000" }} !default;
+$primary: {{ site.style.highlight | default: "#fed136" }} !default;
+$white: {{ site.style.white | default: "#fff" }} !default;
+$black: {{ site.style.black | default: "#000" }} !default;
 
 // Custom Images
-$header-image: "{{ site.header-image }}";
+$header-image: "{{ site.style.header-image }}";
 
 // Global CSS
 @import "base/page.scss";

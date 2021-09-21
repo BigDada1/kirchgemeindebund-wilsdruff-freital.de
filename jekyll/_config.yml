@@ -20,7 +20,12 @@ title: Kirchgemeindebund Wilsdruff-Freital
 owner: Ev.-Luth. Kirchgemeindebund Wilsdruff-Freital
 description: ""
 
-header-image: "/assets/img/churches/st_nikolaikirche_wilsdruff.jpg"
+style:
+  highlight: # default: "#fed136"
+  white: # default: "#fff"
+  black: # default: "#000"
+  header-image: "/assets/img/churches/st_nikolaikirche_wilsdruff.jpg"
+  churches-icon: "fas fa-expand fa-3x" # default: "fas fa-plus fa-3x"
 
 contact:
   name: Matthias Weinhold
