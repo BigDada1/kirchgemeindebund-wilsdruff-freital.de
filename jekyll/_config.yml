@@ -39,9 +39,9 @@ style:
   header-image: "/assets/img/churches/st_nikolaikirche_wilsdruff.jpg"
   churches-icon: "fas fa-expand fa-3x" # default: "fas fa-plus fa-3x"
 
-churches:
+churches_grid:
   section: churches
-  title: "Kirchgemeinden"
+  title: Kirchgemeinden
   text: #"Lorem ipsum dolor sit amet consectetur."
   
 contact:
