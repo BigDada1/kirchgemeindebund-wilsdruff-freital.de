@@ -2,11 +2,11 @@
 caption:
   title: Freital
   subtitle: #Ev.-Luth Kirchgemeinde Freital
-  thumbnail: https://via.placeholder.com/350x219
+  thumbnail: /assets/img/churches/default.png
 
 title: Freital
 subtitle: Ev.-Luth Kirchgemeinde Freital
-image: https://via.placeholder.com/350x219
+image: /assets/img/churches/default.png
 alt: #
 ---
 Lorem ipsum dolor sit amet consectetur. **Markdown** supported.

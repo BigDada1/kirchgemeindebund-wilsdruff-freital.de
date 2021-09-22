@@ -2,11 +2,11 @@
 caption:
   title: Pesterwitz
   subtitle: #Ev.-Luth. St. Jakobuskirchgemeinde
-  thumbnail: https://via.placeholder.com/350x219
+  thumbnail: /assets/img/churches/default.png
 
 title: Pesterwitz
 subtitle: Ev.-Luth. St. Jakobuskirchgemeinde
-image: https://via.placeholder.com/350x219
+image: /assets/img/churches/default.png
 alt: #
 ---
 Lorem ipsum dolor sit amet consectetur. **Markdown** supported.

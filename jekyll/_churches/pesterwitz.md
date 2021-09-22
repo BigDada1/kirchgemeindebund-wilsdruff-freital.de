@@ -2,11 +2,11 @@
 caption:
   title: Linkselbische Täler
   subtitle: #Ev.-Luth. XXX Kirchgemeinde
-  thumbnail: https://via.placeholder.com/350x219
+  thumbnail: /assets/img/churches/default.png
 
 title: Linkselbische Täler
 subtitle: Ev.-Luth. XXX Kirchgemeinde
-image: https://via.placeholder.com/350x219
+image: /assets/img/churches/default.png
 alt: #
 ---
 Lorem ipsum dolor sit amet consectetur. **Markdown** supported.

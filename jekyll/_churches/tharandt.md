@@ -2,11 +2,11 @@
 caption:
   title: Tharandt
   subtitle: #Ev.-Luth Kirchgemeinde Tharandt
-  thumbnail: https://via.placeholder.com/350x219
+  thumbnail: /assets/img/churches/default.png
 
 title: Tharandt
 subtitle: Ev.-Luth Kirchgemeinde Tharandt
-image: https://via.placeholder.com/350x219
+image: /assets/img/churches/default.png
 alt: #
 ---
 Lorem ipsum dolor sit amet consectetur. **Markdown** supported.
