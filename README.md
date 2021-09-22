@@ -27,4 +27,4 @@ Start Jekyll in terminal
 ```bash
 bundle exec jekyll serve --livereload
 ```
-If there are no exceptions, the generated site can be found at [localhost:4000](http://localhoast:4000).
+If there are no exceptions, the generated site can be found at [localhost:4000](http://localhost:4000).
