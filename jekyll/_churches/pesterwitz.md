@@ -1,17 +1,18 @@
 ---
 caption:
-  title: Linkselbische Täler
-  subtitle: #Ev.-Luth. XXX Kirchgemeinde
-  thumbnail: /assets/img/churches/default.png
+  title: Pesterwitz
+  subtitle: #Ev.-Luth. St. Jakobuskirchgemeinde
+  thumbnail: /assets/img/churches/kirche-pesterwitz.jpg
 
-title: Linkselbische Täler
-subtitle: Ev.-Luth. XXX Kirchgemeinde
-image: /assets/img/churches/default.png
+title: Pesterwitz
+subtitle: Ev.-Luth. St. Jakobuskirchgemeinde
+image: /assets/img/churches/kirche-pesterwitz.jpg
 alt: #
 ---
 Lorem ipsum dolor sit amet consectetur. **Markdown** supported.
 
 {:.list-inline} 
-- Pfarramt: Kirchstraße 6 · 01665 Klipphausen OT Weistropp
-- Telefon: 0351 4537747
-- <a href="https://kirche-weistropp.de" target="_blank">kirche-weistropp.de</a>
+- Pfarramt: Zur Jakobuskirche 2 · 01705 Freital
+- Telefon: 035204 48286
+- <a href="https://kirche-pesterwitz.de" target="_blank">kirche-pesterwitz.de</a>
+
