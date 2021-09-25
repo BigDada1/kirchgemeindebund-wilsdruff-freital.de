@@ -2,8 +2,6 @@
 layout: page
 title: Impressum
 footer: true
-sitemap:
-  exclude: 'yes'
 ---
 
 # Verantwortlich gemäß § 5 TMG
