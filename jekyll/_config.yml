@@ -13,8 +13,7 @@
 
 theme: jekyll-agency
 
-url    : "" # the base hostname & protocol for your site, e.g. http://example.com
-baseurl: "" # the subpath of your site, e.g. /blog
+url: https://www.kirchgemeindebund-wilsdruff-freital.de # the base hostname & protocol for your site, e.g. http://example.com
 
 title: Kirchgemeindebund Wilsdruff-Freital
 owner: Ev.-Luth. Kirchgemeindebund Wilsdruff-Freital

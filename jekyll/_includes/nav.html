@@ -5,7 +5,7 @@
   style="background-color: #212529"
 >
   <div class="container">
-    <a class="navbar-brand js-scroll-trigger" href="{{ site.baseurl }}/#">
+    <a class="navbar-brand js-scroll-trigger" href="{{ site.url }}/#">
       {%- if site.logo -%}
       <img
         height="{{ site.logo.height | default: 52 }}"
@@ -35,7 +35,7 @@
           {%- else if link.section -%}
           <a
             class="nav-link js-scroll-trigger"
-            href="{{ site.baseurl }}/#{{ link.section }}"
+            href="{{ site.url }}/#{{ link.section }}"
             >{{ link.title }}</a
           >
           {%- else -%}
