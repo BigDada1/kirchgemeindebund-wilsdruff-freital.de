@@ -5,7 +5,7 @@ caption:
   thumbnail: /assets/img/churches/default.png
 
 title: Linkselbische Täler
-subtitle: Ev.-Luth. XXX Kirchgemeinde
+subtitle: Ev.-Luth. Kirchgemeinde in den linkselbischen Tälern
 image: /assets/img/churches/default.png
 alt: #
 ---
