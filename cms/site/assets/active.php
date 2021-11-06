@@ -1,0 +1,1 @@
+<?php // Created by ProcessWire - Do not delete this file. The existence of this file indicates the site is confirmed active and first-time use errors may be suppressed. Installed at: [/mnt/web105/c2/82/53575282/htdocs/kirchgemeindebund-wilsdruff-freital.de/cms/]

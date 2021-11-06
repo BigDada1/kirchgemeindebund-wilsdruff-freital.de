@@ -34,3 +34,9 @@ Temporary Items
 .nova/*
 
 # End of https://www.gitignore.io/api/macos,nova
+
+# ProcessWire Files And Folders
+cms/site/assets/cache/*
+cms/site/assets/logs/*
+cms/site/assets/sessions/*
+cms/site/assets/files/*
