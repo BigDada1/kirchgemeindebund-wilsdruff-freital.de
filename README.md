@@ -1,6 +1,6 @@
 # kirchgemeindebund-wilsdruff-freital.de
 
-## Installation
+## Jekyll Installation
 
 Requirements:
 - [Ruby](https://www.ruby-lang.org/en/downloads/)
