@@ -14,13 +14,6 @@ Install [WEBrick](https://rubygems.org/gems/webrick/versions/1.7.0):
 gem install webrick -v 1.7.0
 ```
 
-## Check out
-
-Clone this repo
-```bash
-git clone https://github.com/BigDada1/kirchgemeindebund-wilsdruff-freital.de.git
-```
-
 ## Run
 
 Start Jekyll in terminal
