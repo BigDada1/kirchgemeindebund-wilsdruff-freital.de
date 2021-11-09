@@ -1,6 +1,6 @@
 # kirchgemeindebund-wilsdruff-freital.de
 
-## Installation
+## Jekyll Installation
 
 Requirements:
 - [Ruby](https://www.ruby-lang.org/en/downloads/)
@@ -12,13 +12,6 @@ For detailed install instructions, follow the [guide for your operating system](
 Install [WEBrick](https://rubygems.org/gems/webrick/versions/1.7.0):
 ```bash
 gem install webrick -v 1.7.0
-```
-
-## Check out
-
-Clone this repo
-```bash
-git clone https://github.com/BigDada1/kirchgemeindebund-wilsdruff-freital.de.git
 ```
 
 ## Run
