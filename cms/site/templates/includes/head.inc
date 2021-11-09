@@ -17,16 +17,31 @@ $siteTitleLong = $home->title_long;
     <link href="/assets/css/agency.css" rel="stylesheet"/>
     <meta name="google-site-verification" content="TvUyDDIB758IKtWR0t3cS3S89ivZ8V034szemF2l69g"/>
 <?
-if($page != $home || $home->body) {
+if($page != $home) {
     echo "<style>
-      #pagecontainer {
+    #pagecontainer {
         padding-top: 150px;
-      }
-      @media only screen and (max-width: 991px) {
+        padding-bottom: 150px;
+    }
+    @media only screen and (max-width: 991px) {
         #pagecontainer {
-          padding-top: 100px;
+            padding-top: 100px;
+            padding-bottom: 100px;
         }
-      }
+    }
+    </style>";
+} else if($home->body) {
+    echo "<style>
+    #pagecontainer {
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+    @media only screen and (max-width: 991px) {
+        #pagecontainer {
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+    }
     </style>";
 }
 ?>
