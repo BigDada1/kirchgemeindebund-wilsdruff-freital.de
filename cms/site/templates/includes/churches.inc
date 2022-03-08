@@ -1,5 +1,5 @@
 <?
-$parishList = $pages->findOne("template=parish_list, include=hidden");
+$parishList = $pages->findOne("template=parish-list, include=hidden");
 $width = 700;
 $height = 440;
 ?>

@@ -1,5 +1,5 @@
 <?
-$parishList = $pages->findOne("template=parish_list, include=hidden");
+$parishList = $pages->findOne("template=parish-list, include=hidden");
 $contact = $pages->findOne("template=contact, include=hidden");
 $navbarAnchorTarget = "#page-top";
 $navbarInlineStyle = "";
@@ -16,7 +16,11 @@ if($page != $home) {
            <ul class="navbar-nav text-uppercase ml-auto">
 <?
 foreach ($home->header_sites as $item) {
-  echo "<li class='nav-item'><a class='nav-link js-scroll-trigger' href='/#{$item->name}'>{$item->title}</a></li>\n";
+  if($item->template == 'contact' || $item->template == 'parish-list' || $item->template == 'event-list') {
+    echo "<li class='nav-item'><a class='nav-link js-scroll-trigger' href='/#{$item->name}'>{$item->title}</a></li>\n";
+  } else {
+    echo "<li class='nav-item'><a class='nav-link js-scroll-trigger' href='{$item->url}'>{$item->title}</a></li>\n";
+  }
 }
 if ($page->editable()) {
   echo "<li class='nav-item'><a class='nav-link js-scroll-trigger' href='{$page->editUrl}' title='\"{$page->title}\" bearbeiten'>✎</a></li>\n";
