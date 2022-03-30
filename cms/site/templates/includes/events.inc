@@ -35,7 +35,9 @@ foreach ($events->children as $item) {
                      </tr>
                    </thead>
                    <tbody>
-<?foreach ($events->children as $item) {
+<?
+$children = $events->children->sort("date, time");
+foreach ($children as $item) {
   $date = $item->date;
   $today = date('Ymd');
   $date_Ymd = date('Ymd', $date);
