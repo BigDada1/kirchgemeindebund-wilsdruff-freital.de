@@ -19,6 +19,10 @@ $siteLogo .= "<span>$siteTitleWithBreaks</span>";
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta name="description" content=""/>
     <title><? echo $siteTitle ?></title>
+    <meta name="description" content="Der Ev.-Luth. Kirchengemeindebund Wilsdruff-Freital wurde zum 1. Januar 2021 gegründet. Er ist eine Verbindung von acht Kirchengemeinden. Zunächst ist der Kirchgemeindebund eine Verwaltungsgemeinschaft. Daneben beginnen wir, in der Verkündigung Synergien zu nutzen. Wir arbeiten daran, dass dieses Zusammenwirken wächst und wünschen, dass ein Gemeinschaftsgefühl entsteht.">
+    <meta property="og:title" content="<?php echo $siteTitle ?>">
+    <meta property="og:description" content="Der Ev.-Luth. Kirchengemeindebund Wilsdruff-Freital wurde zum 1. Januar 2021 gegründet. Er ist eine Verbindung von acht Kirchengemeinden. Zunächst ist der Kirchgemeindebund eine Verwaltungsgemeinschaft. Daneben beginnen wir, in der Verkündigung Synergien zu nutzen. Wir arbeiten daran, dass dieses Zusammenwirken wächst und wünschen, dass ein Gemeinschaftsgefühl entsteht.">
+    <meta property="og:image" content="<?php echo $home->httpUrl() ?>assets/KGB.png">
     <link rel="stylesheet" href="/assets/css/main.css">
     <noscript>
       <link rel="stylesheet" href="/assets/css/noscript.css">
