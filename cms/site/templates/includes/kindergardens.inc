@@ -12,7 +12,7 @@ if ($kindergardensList->id != $page->id)
   echo $kindergardensList->body;
 }
 ?>
-  <div class="tiles two-column">
+  <div class="tiles">
 <?
 $index = 1;
 foreach ($kindergardensList->children as $item)
