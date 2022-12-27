@@ -9,7 +9,7 @@ if ($page->editable())
 <?
 $width = 1200;
 $height = 440;
-if($page->template == "parish")
+if ($page->template == "parish" || $page->template == "kindergarden")
 {
   $imageUrl = "/assets/img/churches/default.png";
   if(count($page->image))
@@ -21,12 +21,12 @@ if($page->template == "parish")
 
 echo $page->body;
 
-if ($page->template == "parish")
+if ($page->template == "parish" || $page->template == "kindergarden")
 {
   echo "<hr>";
 }
 
-if($page->template == "parish")
+if ($page->template == "parish" || $page->template == "kindergarden")
 {
   $address = $page->address;
   $phone = $page->phone;
