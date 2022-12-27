@@ -1,21 +1,15 @@
 <?
 $events = $pages->findOne("template=event-list, include=hidden");
+$eventsId = str_replace("/", "", $events->url);
 ?>
-<section class="page-section" id="<? echo $events->name ?>">
-   <div class="container">
-       <div class="row">
-           <div class="col-lg-12 text-center">
-               <h2 class="section-heading text-uppercase"><?
-
-echo $events->title;
-
-if ($events->editable()) {
-  echo " <a href='{$events->editUrl}' title='\"{$events->title}\" bearbeiten'>✎</a>";
+<section id="<? echo $eventsId ?>">
+<?
+if ($events->id != $page->id)
+{
+  echo "<h2 class=\"section-heading text-uppercase\">{$events->title}</h2>";
+  echo $events->body;
 }
 
-?></h2>
-               <h3 class="section-subheading text-muted"><? echo $events->subtitle ?></h3>
-<?
 $currentDate = strtotime(date("d M Y")); // compare with today's date with time '00:00'
 foreach ($events->children as $item) {
   $date = $item->date;
@@ -25,16 +19,16 @@ foreach ($events->children as $item) {
   }
 }
 ?>
-              <div class="table-responsive">
-                 <table class="table table-striped">
-                   <thead>
-                     <tr>
-                       <th scope="col">Datum</th>
-                       <th scope="col">Veranstaltung</th>
-                       <th scope="col">Ort</th>
-                     </tr>
-                   </thead>
-                   <tbody>
+  <div class="table-wrapper">
+     <table>
+       <thead>
+         <tr>
+           <th>Datum</th>
+           <th>Veranstaltung</th>
+           <th>Ort</th>
+         </tr>
+       </thead>
+       <tbody>
 <?
 $children = $events->children->sort("date, time");
 foreach ($children as $item) {
@@ -52,39 +46,26 @@ foreach ($children as $item) {
     $formattedDate .= ", " . strftime("%k.%M Uhr", $time);
   }
 
-  $trClass = "";
-  if($item->cancelled) {
-    $trClass = " class='table-danger cancelled'";
-  }
-  echo "<tr{$trClass}>";
-  if($item->cancelled) {
-    $formattedDate = "<del>{$formattedDate}</del>";
-  }
-  echo "<td>{$formattedDate}</td>";
+  echo "<tr>";
+  echo "<td>$formattedDate</td>";
   $titleText = $item->title;
   if($item->external_url) {
-    $titleText = " <a href='{$item->external_url}' target='_blank' title='Weitere Informationen zur Veranstaltung »{$item->title}« öffnen'>{$titleText} <i class='fas fa-external-link-alt'></i></a>";
+    $titleText = " <a href=\"{$item->external_url}\" target=\"_blank\” title=\"Weitere Informationen zur Veranstaltung »{$item->title}« öffnen\">$titleText <i class=\"fas fa-external-link-alt\"></i></a>";
   }
-  $titleText = "<strong>{$titleText}</strong>";
+  $titleText = "<strong>$titleText</strong>";
   if($item->cancelled) {
-    $titleText = "<del>{$titleText}</del> <span class='badge badge-secondary'>Fällt aus</span>";
+    $titleText = "<del>$titleText</del> <em>(Fällt aus)</em>";
   }
   if ($item->editable()) {
-    $titleText .= " <a href='{$item->editUrl}' title='\"{$item->title}\" bearbeiten'>✎</a>";
+    $titleText .= " <a href=\"{$item->editUrl}\" title='\"{$item->title}\" bearbeiten'>✎</a>";
   }
-  echo "<td>{$titleText}</td>";
-  $location = $item->location;
-  if($item->cancelled) {
-    $location = "<del>{$location}</del>";
-  }
-  echo "<td>{$location}</td>";
+  echo "<td>$titleText</td>";
+  echo "<td>{$item->location}</td>";
   echo "</tr>";
 }
 ?>
-              </tbody>
-            </table>
-          </div>
-         </div>
-       </div>
-   </div>
+      </tbody>
+    </table>
+  </div>
 </section>
+<hr>
