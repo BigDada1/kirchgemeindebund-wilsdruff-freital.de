@@ -30,38 +30,154 @@ foreach ($events->children as $item) {
        </thead>
        <tbody>
 <?
-$children = $events->children->sort("date, time");
-foreach ($children as $item) {
-  $date = $item->date;
-  $today = date('Ymd');
-  $date_Ymd = date('Ymd', $date);
-  $formattedDate = strftime("%a %e. %B %Y", $date);
-  if ($today == $date_Ymd) {
-    $formattedDate = "Heute";
-  } elseif (date('Ymd', strtotime('+1 day')) == $date_Ymd) {
-    $formattedDate = "Morgen";
-  }
-  $time = $item->time;
-  if ($time) {
-    $formattedDate .= ", " . strftime("%k.%M Uhr", $time);
-  }
+$churchDeskApiVersion = $events->churchdesk_api_version;
+$partnerToken = $events->churchdesk_api_key;
+$organizationId = $events->churchdesk_organization_id;
+$categoryFilterName = $events->churchdesk_category_name;
+$http = new WireHttp();
+$response = $http->getJSON("https://api2.churchdesk.com/api/$churchDeskApiVersion/events?partnerToken=$partnerToken&organizationId=$organizationId&itemsNumber=100");
 
-  echo "<tr>";
-  echo "<td>$formattedDate</td>";
-  $titleText = $item->title;
-  if($item->external_url) {
-    $titleText = " <a href=\"{$item->external_url}\" target=\"_blank\” title=\"Weitere Informationen zur Veranstaltung »{$item->title}« öffnen\">$titleText <i class=\"fas fa-external-link-alt\"></i></a>";
+$eventListIsEmpty = true;
+if($response !== false)
+{
+  foreach ($response as $event)
+  {
+    if(!hasKgbCategory($event, $categoryFilterName))
+    {
+      continue;
+    }
+    $eventListIsEmpty = false;
+
+    $now = new \DateTimeImmutable("now");
+    $tomorrow = new \DateTime("now");
+    $tomorrow->modify('+1 day');
+    $startDate = new \DateTimeImmutable($event["startDate"]);
+    $endDate = new \DateTimeImmutable($event["endDate"]);
+    $dateFormatter = new \IntlDateFormatter('de_DE', \IntlDateFormatter::SHORT, \IntlDateFormatter::SHORT);
+    $dateFormatter->setPattern('E d. MMMM');
+
+    $formattedStartDate = $dateFormatter->format($startDate);
+    $formattedEndDate = $dateFormatter->format($endDate);
+    $formattedNow = $dateFormatter->format($now);
+    $formattedTomorrow = $dateFormatter->format($tomorrow);
+
+    $date = relativeDate($formattedStartDate, $formattedNow, $formattedTomorrow);
+    if ($formattedStartDate != $formattedEndDate)
+    {
+      $date .= " – " . relativeDate($formattedEndDate, $formattedNow, $formattedTomorrow);
+    }
+
+    echo "<tr>";
+    $now = new \DateTimeImmutable("now");
+    $tomorrow = new \DateTime("now");
+    $tomorrow->modify('+1 day');
+    $startDate = new \DateTimeImmutable($event["startDate"]);
+    $endDate = new \DateTimeImmutable($event["endDate"]);
+    $dateFormatter = new \IntlDateFormatter('de_DE', \IntlDateFormatter::SHORT, \IntlDateFormatter::SHORT);
+    $dateFormatter->setPattern('E d. MMMM');
+    $timeFormatter = new \IntlDateFormatter('de_DE', \IntlDateFormatter::SHORT, \IntlDateFormatter::SHORT);
+    $timeFormatter->setPattern('H.mm');
+    $isAllDay = $event["allDay"];
+    $showEndTime = $event["showEndtime"];
+
+    $formattedStartDate = $dateFormatter->format($startDate);
+    $formattedEndDate = $dateFormatter->format($endDate);
+    $formattedNow = $dateFormatter->format($now);
+    $formattedTomorrow = $dateFormatter->format($tomorrow);
+
+    $resultDate = $date;
+    if (!$isAllDay)
+    {
+      if ($showEndTime)
+      {
+        $resultDate .= ", " . $timeFormatter->format($startDate) . " – " . $timeFormatter->format($endDate) . " Uhr";
+      }
+      else
+      {
+        $resultDate .= ", " . $timeFormatter->format($startDate) . " Uhr";
+      }
+    }
+    echo "<td>$resultDate</td>";
+
+    echo "<td>";
+    echo "<strong>{$event["title"]}</strong>";
+    $summary = $event["summary"];
+    if ($summary)
+    {
+      echo "<br>" . $summary;
+    }
+    $externalLink = extractExternalLink($event["description"]);
+    if($externalLink)
+    {
+      echo "<br>" . $externalLink;
+    }
+    echo "</td>";
+
+    echo "<td>{$event["location"]}</td>";
+    echo "</tr>";
   }
-  $titleText = "<strong>$titleText</strong>";
-  if($item->cancelled) {
-    $titleText = "<del>$titleText</del> <em>(Fällt aus)</em>";
+}
+else
+{
+  echo "<tr><td/><td>HTTP request failed: " . $http->getError() . "</td><td/></tr>";
+}
+if ($eventListIsEmpty)
+{
+  echo "<tr><td/><td>Im Moment sind keine Veranstaltungen verfügbar</td><td/></tr>";
+}
+
+function relativeDate($date, $now, $tomorrow)
+{
+  if ($date == $now)
+  {
+    return "Heute";
   }
-  if ($item->editable()) {
-    $titleText .= " <a href=\"{$item->editUrl}\" title='\"{$item->title}\" bearbeiten'>✎</a>";
+  elseif ($date == $tomorrow)
+  {
+    return "Morgen";
   }
-  echo "<td>$titleText</td>";
-  echo "<td>{$item->location}</td>";
-  echo "</tr>";
+  else
+  {
+    return $date;
+  }
+}
+
+function getCity($event)
+{
+  $locationObj = $event["locationObj"];
+  if ($locationObj)
+  {
+    return $locationObj["city"];
+  }
+  return "";
+}
+
+function extractExternalLink($description)
+{
+  $startPattern = "<p><a";
+  $endPattern = "</a></p>";
+  $parts = explode($startPattern, $description);
+  if (sizeof($parts) > 1)
+  {
+    return "<a" . explode($endPattern, $parts[1])[0] . "</a>";
+  }
+  return "";
+}
+
+function hasKgbCategory($event, $categoryTitle)
+{
+  $categories = $event["categories"];
+  if ($categories)
+  {
+    foreach ($categories as $category)
+    {
+      if ($category["title"] == $categoryTitle)
+      {
+        return true;
+      }
+    }
+  }
+  return false;
 }
 ?>
       </tbody>
