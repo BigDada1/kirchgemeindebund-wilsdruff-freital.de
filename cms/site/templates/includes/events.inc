@@ -42,7 +42,7 @@ if($response !== false)
 {
   foreach ($response as $event)
   {
-    if(!hasKgbCategory($event, $categoryFilterName))
+    if(!hasCategory($event, $categoryFilterName))
     {
       continue;
     }
@@ -164,7 +164,7 @@ function extractExternalLink($description)
   return "";
 }
 
-function hasKgbCategory($event, $categoryTitle)
+function hasCategory($event, $categoryTitle)
 {
   $categories = $event["categories"];
   if ($categories)
