@@ -90,11 +90,11 @@ if($response !== false)
     {
       if ($showEndTime)
       {
-        $resultDate .= ", " . $timeFormatter->format($startDate) . " – " . $timeFormatter->format($endDate) . " Uhr";
+        $resultDate .= ", " . $timeFormatter->format($startDate) . " – " . $timeFormatter->format($endDate) . "&nbsp;Uhr";
       }
       else
       {
-        $resultDate .= ", " . $timeFormatter->format($startDate) . " Uhr";
+        $resultDate .= ", " . $timeFormatter->format($startDate) . "&nbsp;Uhr";
       }
     }
     echo "<td>$resultDate</td>";
