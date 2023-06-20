@@ -40,3 +40,5 @@ cms/site/assets/cache/*
 cms/site/assets/logs/*
 cms/site/assets/sessions/*
 cms/site/assets/files/*
+cms/site/templates/errors/500.html
+cms/site/templates/errors/README.txt
