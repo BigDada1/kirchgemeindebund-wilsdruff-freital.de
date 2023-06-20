@@ -56,6 +56,10 @@ if($response !== false)
     $dateFormatter = new \IntlDateFormatter('de_DE', \IntlDateFormatter::SHORT, \IntlDateFormatter::SHORT);
     $dateFormatter->setPattern('E d. MMMM');
 
+    $monthFormatter = new \IntlDateFormatter('de_DE', \IntlDateFormatter::SHORT, \IntlDateFormatter::SHORT);
+    $monthFormatter->setPattern('M');
+    $monthNumber = $monthFormatter->format($startDate);
+
     $formattedStartDate = $dateFormatter->format($startDate);
     $formattedEndDate = $dateFormatter->format($endDate);
     $formattedNow = $dateFormatter->format($now);
@@ -67,7 +71,7 @@ if($response !== false)
       $date .= " – " . relativeDate($formattedEndDate, $formattedNow, $formattedTomorrow);
     }
 
-    echo "<tr>";
+    echo "<tr class=\"month-" . $monthNumber . "\">";
     $now = new \DateTimeImmutable("now");
     $tomorrow = new \DateTime("now");
     $tomorrow->modify('+1 day');
