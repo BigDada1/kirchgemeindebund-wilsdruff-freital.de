@@ -3,8 +3,12 @@
 $home = $pages->get("/");
 $siteTitle = $home->title;
 $siteTitleLong = $home->title_long;
+if ($page->parent() == $home)
+{
+  $siteTitle .= " · {$page->title}";
+}
 
-$siteTitleWithBreaks = str_replace(" ", "\n", $siteTitle);
+$siteTitleWithBreaks = str_replace(" ", "\n", $home->title);
 $siteTitleWithBreaks = str_replace("-", "\n", $siteTitleWithBreaks);
 $siteLogo = "";
 // $siteLogo .= "<svg viewBox=\"0 0 48 48\" xmlns=\"http://www.w3.org/2000/svg\">
@@ -23,7 +27,7 @@ $siteLogo .= "<span>$siteTitleWithBreaks</span>";
     <meta property="og:title" content="<?php echo $siteTitle ?>">
     <meta property="og:description" content="Der Ev.-Luth. Kirchengemeindebund Wilsdruff-Freital wurde zum 1. Januar 2021 gegründet. Er ist eine Verbindung von acht Kirchengemeinden. Zunächst ist der Kirchgemeindebund eine Verwaltungsgemeinschaft. Daneben beginnen wir, in der Verkündigung Synergien zu nutzen. Wir arbeiten daran, dass dieses Zusammenwirken wächst und wünschen, dass ein Gemeinschaftsgefühl entsteht.">
     <meta property="og:image" content="<?php echo $home->httpUrl() ?>assets/KGB.png">
-    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/main.min.css">
     <noscript>
       <link rel="stylesheet" href="/assets/css/noscript.css">
     </noscript>
