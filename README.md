@@ -1,23 +1,10 @@
 # kirchgemeindebund-wilsdruff-freital.de
 
-## Jekyll Installation
+This is the **Kirchgemeindebund Wilsdruffer-Freital** website dev repo.
 
-Requirements:
-- [Ruby](https://www.ruby-lang.org/en/downloads/)
-- [RubyGems](https://rubygems.org/pages/download)
-- [Jekyll](https://jekyllrb.com/)
+* URL: [kirchgemeindebund-wilsdruff-freital.de](https://www.kirchgemeindebund-wilsdruff-freital.de)
 
-For detailed install instructions, follow the [guide for your operating system](https://jekyllrb.com/docs/installation/#guides).
+## Toolkit
 
-Install [WEBrick](https://rubygems.org/gems/webrick/versions/1.7.0):
-```bash
-gem install webrick -v 1.7.0
-```
-
-## Run
-
-Start Jekyll in terminal
-```bash
-bundle exec jekyll serve --livereload
-```
-If there are no exceptions, the generated site can be found at [localhost:4000](http://localhost:4000).
+* [Phantom by Pixelarity](https://pixelarity.com)
+* [ProcessWire](https://processwire.com)
