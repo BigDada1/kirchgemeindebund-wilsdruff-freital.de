@@ -104,7 +104,7 @@ if($response !== false)
     echo "<td>$resultDate</td>";
 
     echo "<td>";
-    echo "<strong>{$event["title"]}</strong>";
+    echo "<strong>" . polish($event["title"]) . "</strong>";
     $summary = $event["summary"];
     if ($summary)
     {
@@ -182,6 +182,29 @@ function hasCategory($event, $categoryTitle)
     }
   }
   return false;
+}
+
+function polish($input)
+{
+  // replace minus char by ndash
+  $output = str_replace(" - ", " – ", $input);
+
+  // replace ugly quotations {\" „ ”} by {» «}
+  $output = str_replace(" \"", " »", $output);
+  $output = str_replace("\" ", "« ", $output);
+  $output = str_replace("„", "»", $output);
+  $output = str_replace("”", "«", $output);
+
+  // replace starting quotations
+  if(strpos($output, "\"")===0) {
+    $output = "»" . substr($output, 1);
+  }
+  // replace leading quotations
+  if(strripos($output, "\"")===(strlen($output)-1)) {
+    $output = substr($output, 0, -1) . "«";
+  }
+
+  return $output;
 }
 ?>
       </tbody>
