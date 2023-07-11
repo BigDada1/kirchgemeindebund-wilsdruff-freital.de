@@ -3439,21 +3439,27 @@ body.is-menu-visible #menu .close {
 /*
   Month color codes
 */
-tr.month-1, tr.month-7 {
+tr.month-1, table tbody tr:last-of-type.month-1,
+tr.month-7, table tbody tr:last-of-type.month-7 {
   border-left: solid 2em #f2849e80;
 }
-tr.month-2, tr.month-8 {
+tr.month-2, table tbody tr:last-of-type.month-2,
+tr.month-8, table tbody tr:last-of-type.month-8 {
   border-left: solid 2em #7ecaf680;
 }
-tr.month-3, tr.month-9 {
+tr.month-3, table tbody tr:last-of-type.month-3,
+tr.month-9, table tbody tr:last-of-type.month-9 {
   border-left: solid 2em #7bd0c180;
 }
-tr.month-4, tr.month-10 {
+tr.month-4, table tbody tr:last-of-type.month-4,
+tr.month-10, table tbody tr:last-of-type.month-10 {
   border-left: solid 2em #c75b9b80;
 }
-tr.month-5, tr.month-11 {
+tr.month-5, table tbody tr:last-of-type.month-5,
+tr.month-11, table tbody tr:last-of-type.month-11 {
   border-left: solid 2em #ae85ca80;
 }
-tr.month-6, tr.month-12 {
+tr.month-6, table tbody tr:last-of-type.month-6,
+tr.month-12, table tbody tr:last-of-type.month-12 {
   border-left: solid 2em #8499e780;
 }
