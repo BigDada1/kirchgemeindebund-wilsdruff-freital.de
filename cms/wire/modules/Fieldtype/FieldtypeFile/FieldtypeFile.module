@@ -188,6 +188,28 @@ class FieldtypeFile extends FieldtypeMulti implements ConfigurableModule, Fieldt
 	}
 
 	/**
+	 * Get setup options and setup functions for new fields
+	 *
+	 * @return array
+	 * @since 3.0.213
+	 *
+	 */
+	public function ___getFieldSetups() {
+		$setups = parent::___getFieldSetups();
+		$setups['single'] = array(
+			'title' => $this->_('Single file'),
+			'maxFiles' => 1,
+			'textformatters' => 'TextformatterEntities',
+		);
+		$setups['multiple'] = array(
+			'title' => $this->_('Multiple files'), 
+			'maxFiles' => 0,
+			'textformatters' => 'TextformatterEntities',
+		);	
+		return $setups;
+	}
+
+	/**
 	 * Get compatible Fieldtypes
 	 * 
 	 * @param Field $field
@@ -809,6 +831,24 @@ class FieldtypeFile extends FieldtypeMulti implements ConfigurableModule, Fieldt
 		}
 		return $out; 
 	}
+	
+	/**
+	 * Render a markup string of the value.
+	 *
+	 * @param Page $page Page that $value comes from
+	 * @param Field $field Field that $value comes from
+	 * @param mixed $value 
+	 * @param string $property 
+	 * @return string|MarkupFieldtype 
+	 *
+	 */
+	public function ___markupValue(Page $page, Field $field, $value = null, $property = '') {
+		if($property === 'count') {
+			if($value === null) $value = $page->getUnformatted($field->name);
+			return $value instanceof Pagefiles ? $value->count() : ($value instanceof Pagefile ? 1 : 0);
+		}
+		return parent::___markupValue($page, $field, $value, $property);
+	}
 
 	/**
 	 * Get match query
@@ -1289,6 +1329,32 @@ class FieldtypeFile extends FieldtypeMulti implements ConfigurableModule, Fieldt
 	}
 
 	/**
+	 * Return a cloned copy of $field
+	 *
+	 * @param Field $field
+	 * @return Field cloned copy
+	 *
+	 */
+	public function ___cloneField(Field $field) {
+		$this->wire()->fields->addHookAfter('cloned', function(HookEvent $e) {
+			$e->removeHook(null); // run once only
+			$oldField = $e->arguments(0); /** @var Field $oldField */
+			$newField = $e->arguments(1); /** @var Field $newField */
+			if(!$newField->type instanceof FieldtypeFile) return;
+			$templates = $e->wire()->templates;
+			$oldTpl = $templates->get("field-$oldField|field-x-$oldField");
+			if(!$oldTpl) return; // no custom field-* template present
+			$newTpl = $templates->clone($oldTpl, str_replace("$oldField", "$newField", $oldTpl->name));
+			if($newTpl) {
+				$e->message(sprintf(__('Cloned fields template - %1$s => %2$s'), $oldTpl->name, $newTpl->name));
+			} else {
+				$e->warning(sprintf(__('Error cloning template - %1$s => %2$s'), $oldTpl->name, $newTpl->name));
+			}
+		});
+		return parent::___cloneField($field);
+	}
+	
+	/**
 	 * Default list of file extensions supported by this field, and used as the default by getConfigInputfields()
 	 * method. 
 	 *
@@ -1732,4 +1798,3 @@ class FieldtypeFile extends FieldtypeMulti implements ConfigurableModule, Fieldt
 		return new FieldtypeFileConfiguration($this);
 	}
 }
-
