@@ -3,6 +3,7 @@ include("./includes/head.inc");
 include("./includes/header.inc");
 include("./includes/basic-content.inc");
 include("./includes/churches.inc");
+include("./includes/events-func.inc");
 include("./includes/events.inc");
 include("./includes/kindergardens.inc");
 include("./includes/jobs.inc");
