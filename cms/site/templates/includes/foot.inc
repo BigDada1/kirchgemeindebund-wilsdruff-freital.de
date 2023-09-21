@@ -34,7 +34,7 @@ if ($contact->editable())
       <p><? echo $contact->subtitle ?></p>
       <p class="logo"><? echo $siteLogo ?></p>
       <p>
-        <strong><? echo $siteTitle ?></strong>
+        <strong><? echo $siteTitleLong ?></strong>
       </p>
       <p>
         <? echo $address ?><br />
