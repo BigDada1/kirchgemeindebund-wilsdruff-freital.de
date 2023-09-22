@@ -62,7 +62,7 @@ if($response !== false)
   $summarizedMail .= "<p> </p>";
   $summarizedMail .= $page->body;
 
-  $mail->subject($siteTitle . ' (Beta-Version)')
+  $mail->subject($siteTitle)
   ->to($mailTo)
   ->from($mailFrom)
   ->body('Das ist leider eine HTML-Nachricht.')
