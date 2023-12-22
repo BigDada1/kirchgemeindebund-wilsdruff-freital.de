@@ -27,100 +27,108 @@ $partnerToken = $events->churchdesk_api_key;
 $organizationId = $events->churchdesk_organization_id;
 $categoryFilterName = $events->churchdesk_category_name;
 $http = new WireHttp();
-$response = $http->getJSON("https://api2.churchdesk.com/api/$churchDeskApiVersion/events?partnerToken=$partnerToken&organizationId=$organizationId&itemsNumber=100");
 
-$eventListIsEmpty = true;
-if($response !== false)
+$mergedEvents = [];
+for($pageMarker = 0; $pageMarker < 10; $pageMarker++)
 {
-  foreach ($response as $event)
+  $response = $http->getJSON("https://api2.churchdesk.com/api/$churchDeskApiVersion/events?partnerToken=$partnerToken&organizationId=$organizationId&itemsNumber=100&pageMarker=$pageMarker");
+  if($response !== false)
   {
-    if(!hasCategory($event, $categoryFilterName))
+    if(sizeof($response) == 0)
     {
-      continue;
+      break;
     }
-    $eventListIsEmpty = false;
-
-    $now = new \DateTimeImmutable("now");
-    $tomorrow = new \DateTime("now");
-    $tomorrow->modify('+1 day');
-    $startDate = new \DateTimeImmutable($event["startDate"]);
-    $endDate = new \DateTimeImmutable($event["endDate"]);
-    $dateFormatter = new \IntlDateFormatter('de_DE', \IntlDateFormatter::SHORT, \IntlDateFormatter::SHORT);
-    $dateFormatter->setPattern('E d. MMMM');
-
-    $monthFormatter = new \IntlDateFormatter('de_DE', \IntlDateFormatter::SHORT, \IntlDateFormatter::SHORT);
-    $monthFormatter->setPattern('M');
-    $monthNumber = $monthFormatter->format($startDate);
-
-    $formattedStartDate = $dateFormatter->format($startDate);
-    $formattedEndDate = $dateFormatter->format($endDate);
-    $formattedNow = $dateFormatter->format($now);
-    $formattedTomorrow = $dateFormatter->format($tomorrow);
-
-    $date = relativeDate($formattedStartDate, $formattedNow, $formattedTomorrow);
-    if ($formattedStartDate != $formattedEndDate)
+    foreach ($response as $event)
     {
-      $date .= " – " . relativeDate($formattedEndDate, $formattedNow, $formattedTomorrow);
-    }
-
-    echo "<tr class=\"month-" . $monthNumber . "\">";
-    $now = new \DateTimeImmutable("now");
-    $tomorrow = new \DateTime("now");
-    $tomorrow->modify('+1 day');
-    $startDate = new \DateTimeImmutable($event["startDate"]);
-    $endDate = new \DateTimeImmutable($event["endDate"]);
-    $dateFormatter = new \IntlDateFormatter('de_DE', \IntlDateFormatter::SHORT, \IntlDateFormatter::SHORT);
-    $dateFormatter->setPattern('E d. MMMM');
-    $timeFormatter = new \IntlDateFormatter('de_DE', \IntlDateFormatter::SHORT, \IntlDateFormatter::SHORT);
-    $timeFormatter->setPattern('H.mm');
-    $isAllDay = $event["allDay"];
-    $showEndTime = $event["showEndtime"];
-
-    $formattedStartDate = $dateFormatter->format($startDate);
-    $formattedEndDate = $dateFormatter->format($endDate);
-    $formattedNow = $dateFormatter->format($now);
-    $formattedTomorrow = $dateFormatter->format($tomorrow);
-
-    $resultDate = $date;
-    if (!$isAllDay)
-    {
-      if ($showEndTime)
+      if(hasCategory($event, $categoryFilterName))
       {
-        $resultDate .= ", " . $timeFormatter->format($startDate) . " – " . $timeFormatter->format($endDate) . "&nbsp;Uhr";
-      }
-      else
-      {
-        $resultDate .= ", " . $timeFormatter->format($startDate) . "&nbsp;Uhr";
+        array_push($mergedEvents, $event);
       }
     }
-    echo "<td>$resultDate</td>";
-
-    echo "<td>";
-    echo "<strong>" . polish($event["title"]) . "</strong>";
-    $summary = $event["summary"];
-    if ($summary)
-    {
-      echo "<br>" . $summary;
-    }
-    $contributor = $event["contributor"];
-    if ($contributor)
-    {
-      echo "<br>Mitwirkende: " . $contributor;
-    }
-    $externalLink = extractExternalLink($event["description"]);
-    if($externalLink)
-    {
-      echo "<br>" . $externalLink;
-    }
-    echo "</td>";
-
-    echo "<td>{$event["location"]}</td>";
-    echo "</tr>";
   }
 }
-else
+
+$eventListIsEmpty = true;
+foreach ($mergedEvents as $event)
 {
-  echo "<tr><td/><td>HTTP request failed: " . $http->getError() . "</td><td/></tr>";
+  $eventListIsEmpty = false;
+
+  $now = new \DateTimeImmutable("now");
+  $tomorrow = new \DateTime("now");
+  $tomorrow->modify('+1 day');
+  $startDate = new \DateTimeImmutable($event["startDate"]);
+  $endDate = new \DateTimeImmutable($event["endDate"]);
+  $dateFormatter = new \IntlDateFormatter('de_DE', \IntlDateFormatter::SHORT, \IntlDateFormatter::SHORT);
+  $dateFormatter->setPattern('E d. MMMM');
+
+  $monthFormatter = new \IntlDateFormatter('de_DE', \IntlDateFormatter::SHORT, \IntlDateFormatter::SHORT);
+  $monthFormatter->setPattern('M');
+  $monthNumber = $monthFormatter->format($startDate);
+
+  $formattedStartDate = $dateFormatter->format($startDate);
+  $formattedEndDate = $dateFormatter->format($endDate);
+  $formattedNow = $dateFormatter->format($now);
+  $formattedTomorrow = $dateFormatter->format($tomorrow);
+
+  $date = relativeDate($formattedStartDate, $formattedNow, $formattedTomorrow);
+  if ($formattedStartDate != $formattedEndDate)
+  {
+    $date .= " – " . relativeDate($formattedEndDate, $formattedNow, $formattedTomorrow);
+  }
+
+  echo "<tr class=\"month-" . $monthNumber . "\">";
+  $now = new \DateTimeImmutable("now");
+  $tomorrow = new \DateTime("now");
+  $tomorrow->modify('+1 day');
+  $startDate = new \DateTimeImmutable($event["startDate"]);
+  $endDate = new \DateTimeImmutable($event["endDate"]);
+  $dateFormatter = new \IntlDateFormatter('de_DE', \IntlDateFormatter::SHORT, \IntlDateFormatter::SHORT);
+  $dateFormatter->setPattern('E d. MMMM');
+  $timeFormatter = new \IntlDateFormatter('de_DE', \IntlDateFormatter::SHORT, \IntlDateFormatter::SHORT);
+  $timeFormatter->setPattern('H.mm');
+  $isAllDay = $event["allDay"];
+  $showEndTime = $event["showEndtime"];
+
+  $formattedStartDate = $dateFormatter->format($startDate);
+  $formattedEndDate = $dateFormatter->format($endDate);
+  $formattedNow = $dateFormatter->format($now);
+  $formattedTomorrow = $dateFormatter->format($tomorrow);
+
+  $resultDate = $date;
+  if (!$isAllDay)
+  {
+    if ($showEndTime)
+    {
+      $resultDate .= ", " . $timeFormatter->format($startDate) . " – " . $timeFormatter->format($endDate) . "&nbsp;Uhr";
+    }
+    else
+    {
+      $resultDate .= ", " . $timeFormatter->format($startDate) . "&nbsp;Uhr";
+    }
+  }
+  echo "<td>$resultDate</td>";
+
+  echo "<td>";
+  echo "<strong>" . polish($event["title"]) . "</strong>";
+  $summary = $event["summary"];
+  if ($summary)
+  {
+    echo "<br>" . $summary;
+  }
+  $contributor = $event["contributor"];
+  if ($contributor)
+  {
+    echo "<br>Mitwirkende: " . $contributor;
+  }
+  $externalLink = extractExternalLink($event["description"]);
+  if($externalLink)
+  {
+    echo "<br>" . $externalLink;
+  }
+  echo "</td>";
+
+  echo "<td>{$event["location"]}</td>";
+  echo "</tr>";
 }
 if ($eventListIsEmpty)
 {
