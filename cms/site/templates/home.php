@@ -6,5 +6,6 @@ include("./includes/churches.inc");
 include("./includes/events-func.inc");
 include("./includes/events.inc");
 include("./includes/kindergardens.inc");
+include("./includes/projects.inc");
 include("./includes/jobs.inc");
 include("./includes/foot.inc");
