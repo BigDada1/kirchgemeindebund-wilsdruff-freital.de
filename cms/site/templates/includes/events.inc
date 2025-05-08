@@ -1,13 +1,14 @@
 <?
 $events = $pages->findOne("template=event-list, include=hidden");
 $eventsId = str_replace("/", "", $events->url);
+$limit = $page->event_limit;
 ?>
 <section id="<? echo $eventsId ?>">
 <?
 if ($events->id != $page->id)
 {
   echo "<h2 class=\"section-heading text-uppercase\">{$events->title}</h2>";
-  echo $events->body;
+  echo "<p>Weitere Veranstaltungen in unserer Region finden Sie in der <a href=\"{$events->url}\">Veranstaltungs-Übersicht</a>.</p>";
 }
 
 ?>
@@ -29,6 +30,7 @@ $categoryFilterName = $events->churchdesk_category_name;
 $http = new WireHttp();
 
 $mergedEvents = [];
+$counter = 0;
 for($pageMarker = 0; $pageMarker < 10; $pageMarker++)
 {
   $response = $http->getJSON("https://api2.churchdesk.com/api/$churchDeskApiVersion/events?partnerToken=$partnerToken&organizationId=$organizationId&itemsNumber=100&pageMarker=$pageMarker");
@@ -42,7 +44,15 @@ for($pageMarker = 0; $pageMarker < 10; $pageMarker++)
     {
       if(hasCategory($event, $categoryFilterName))
       {
-        array_push($mergedEvents, $event);
+        if ($counter < $limit)
+        {
+          array_push($mergedEvents, $event);
+          $counter++;
+        }
+        else
+        {
+          break;
+        }
       }
     }
   }
