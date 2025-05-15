@@ -24,7 +24,7 @@ echo $page->body;
 if ($page->template == "parish" || $page->template == "kindergarden" || $page->template == "project")
 {
   $files = $page->files;
-  if($files)
+  if(count($files))
   {
     echo "<hr>";
     if ($page->title_files)
